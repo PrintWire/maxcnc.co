@@ -438,11 +438,7 @@
           <div class="error-msg" id="err-email">Valid email required</div>
         </div>
 
-        <div class="form-group">
-          <label for="dob">Date of Birth <span class="req">*</span></label>
-          <input type="date" id="dob" name="dob" required>
-          <div class="error-msg" id="err-dob">Required</div>
-        </div>
+
 
         <div class="waiver-section">
           <h3>Release of Liability</h3>
@@ -512,16 +508,16 @@
     const first = document.getElementById('first_name').value.trim();
     const last = document.getElementById('last_name').value.trim();
     const email = document.getElementById('email').value.trim();
-    const dob = document.getElementById('dob').value;
+
     const cb1 = document.getElementById('cb1').checked;
 
     document.getElementById('err-first').style.display = first ? 'none' : 'block';
     document.getElementById('err-last').style.display = last ? 'none' : 'block';
     document.getElementById('err-email').style.display = /\S+@\S+\.\S+/.test(email) ? 'none' : 'block';
-    document.getElementById('err-dob').style.display = dob ? 'none' : 'block';
+
     document.getElementById('err-cb1').style.display = cb1 ? 'none' : 'block';
 
-    if (!first || !last || !/\S+@\S+\.\S+/.test(email) || !dob || !cb1) return;
+    if (!first || !last || !/\S+@\S+\.\S+/.test(email) || !cb1) return;
 
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
@@ -532,7 +528,7 @@
       first_name: first,
       last_name: last,
       email: email,
-      dob: dob,
+
       agree_waiver: cb1,
       agree_photo: document.getElementById('cb2').checked,
       agree_minor: document.getElementById('cb3').checked,
