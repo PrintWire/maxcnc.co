@@ -3,93 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Open House Waiver — 4429-4431 W Division, Chicago</title>
+<title>Waiver — 1st Annual Division St. Exhibition</title>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #0f0f0f;
-    color: #e8e8e8;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #000;
+    color: #fff;
     min-height: 100vh;
     padding: 20px 16px 40px;
   }
 
   .container {
-    max-width: 680px;
+    max-width: 600px;
     margin: 0 auto;
   }
 
   header {
     text-align: center;
-    padding: 32px 0 24px;
-    border-bottom: 1px solid #2a2a2a;
-    margin-bottom: 28px;
+    padding: 40px 0 32px;
+    border-bottom: 1px solid #222;
+    margin-bottom: 32px;
   }
 
-  header .event-date {
-    font-size: 13px;
-    letter-spacing: 0.12em;
+  header .event-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #888;
-    margin-bottom: 10px;
+    color: #666;
+    margin-bottom: 16px;
   }
 
   header h1 {
-    font-size: clamp(22px, 5vw, 32px);
-    font-weight: 700;
+    font-size: clamp(28px, 6vw, 42px);
+    font-weight: 300;
     color: #fff;
-    line-height: 1.2;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     margin-bottom: 8px;
   }
 
-  header .address {
-    font-size: 15px;
-    color: #aaa;
+  header h1 span {
+    display: block;
+    font-weight: 600;
   }
 
-  .hosts {
+  header .event-info {
+    font-size: 13px;
+    color: #888;
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  header .event-info strong {
+    color: #fff;
+    font-weight: 500;
+  }
+
+  .artists {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
     justify-content: center;
-    margin: 16px 0 0;
+    margin: 20px 0 0;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
-  .host-tag {
-    background: #1a1a1a;
+  .artist-tag {
+    background: transparent;
     border: 1px solid #333;
-    border-radius: 20px;
-    padding: 4px 12px;
-    font-size: 12px;
-    color: #ccc;
-  }
-
-  .waiver-box {
-    background: #141414;
-    border: 1px solid #2a2a2a;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 24px;
-    max-height: 220px;
-    overflow-y: auto;
-    font-size: 13px;
-    line-height: 1.7;
-    color: #aaa;
-  }
-
-  .waiver-box::-webkit-scrollbar { width: 4px; }
-  .waiver-box::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
-
-  .waiver-box h3 {
-    color: #ddd;
-    font-size: 14px;
-    margin-bottom: 10px;
+    border-radius: 2px;
+    padding: 4px 10px;
+    font-size: 10px;
+    color: #999;
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
 
-  .waiver-box p { margin-bottom: 10px; }
+  .waiver-box {
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 24px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 12px;
+    line-height: 1.8;
+    color: #777;
+  }
+
+  .waiver-box::-webkit-scrollbar { width: 3px; }
+  .waiver-box::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+  .waiver-box h3 {
+    color: #aaa;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .waiver-box p { margin-bottom: 12px; }
 
   .form-group {
     margin-bottom: 20px;
@@ -97,31 +118,33 @@
 
   label {
     display: block;
-    font-size: 13px;
-    color: #999;
-    margin-bottom: 6px;
-    letter-spacing: 0.04em;
+    font-size: 10px;
+    color: #666;
+    margin-bottom: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
-  label span.req { color: #e06c75; }
+  label span.req { color: #c9a227; }
 
   input[type="text"],
   input[type="email"],
   input[type="date"] {
     width: 100%;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 8px;
-    padding: 12px 14px;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 2px;
+    padding: 14px 16px;
     font-size: 16px;
     color: #fff;
     outline: none;
     transition: border-color 0.2s;
     -webkit-appearance: none;
+    font-family: inherit;
   }
 
-  input:focus { border-color: #666; }
-  input::placeholder { color: #555; }
+  input:focus { border-color: #444; }
+  input::placeholder { color: #444; }
 
   .row {
     display: grid;
@@ -134,31 +157,31 @@
   .checkbox-group {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
-    background: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 8px;
-    padding: 14px;
-    margin-bottom: 12px;
+    gap: 14px;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 2px;
+    padding: 16px;
+    margin-bottom: 10px;
     cursor: pointer;
     transition: border-color 0.2s;
   }
 
-  .checkbox-group:hover { border-color: #555; }
-  .checkbox-group.checked { border-color: #4caf50; background: #0f1f0f; }
+  .checkbox-group:hover { border-color: #333; }
+  .checkbox-group.checked { border-color: #c9a227; background: #0d0b00; }
 
   .checkbox-group input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
-    accent-color: #4caf50;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    accent-color: #c9a227;
     cursor: pointer;
     margin-top: 1px;
   }
 
   .checkbox-group .check-label {
-    font-size: 13px;
-    color: #ccc;
+    font-size: 12px;
+    color: #999;
     line-height: 1.5;
     cursor: pointer;
   }
@@ -168,64 +191,70 @@
     background: #fff;
     color: #000;
     border: none;
-    border-radius: 10px;
+    border-radius: 2px;
     padding: 16px;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
     cursor: pointer;
     transition: background 0.2s, transform 0.1s;
-    margin-top: 8px;
+    margin-top: 12px;
+    font-family: inherit;
   }
 
   .submit-btn:hover { background: #e8e8e8; }
   .submit-btn:active { transform: scale(0.98); }
-  .submit-btn:disabled { background: #333; color: #666; cursor: not-allowed; transform: none; }
+  .submit-btn:disabled { background: #222; color: #555; cursor: not-allowed; transform: none; }
 
   .success-screen {
     display: none;
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
   }
 
   .success-screen .checkmark {
-    font-size: 64px;
-    margin-bottom: 20px;
+    font-size: 48px;
+    margin-bottom: 24px;
   }
 
   .success-screen h2 {
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: 300;
     color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
   .success-screen p {
-    color: #888;
-    font-size: 15px;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
   }
 
   .error-msg {
-    color: #e06c75;
-    font-size: 12px;
-    margin-top: 4px;
+    color: #c9a227;
+    font-size: 11px;
+    margin-top: 6px;
     display: none;
   }
 
   .scroll-hint {
     text-align: center;
-    font-size: 11px;
-    color: #555;
+    font-size: 10px;
+    color: #444;
     margin-top: -16px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    letter-spacing: 0.05em;
   }
 
   footer {
     text-align: center;
-    font-size: 11px;
-    color: #444;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #1a1a1a;
+    font-size: 10px;
+    color: #333;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #111;
+    letter-spacing: 0.05em;
   }
 </style>
 </head>
@@ -233,26 +262,35 @@
 <div class="container">
 
   <header>
-    <div class="event-date">Saturday, April 11, 2026 · 3:00 PM – 10:00 PM</div>
-    <h1>Open House Waiver</h1>
-    <div class="address">4429–4431 W Division St, Chicago, IL</div>
-    <div class="hosts">
-      <span class="host-tag">Norman Teague Design Studio</span>
-      <span class="host-tag">MaxCNC</span>
-      <span class="host-tag">ChiLab Studio</span>
-      <span class="host-tag">Eric Hotchkiss</span>
-      <span class="host-tag">John Preus</span>
+    <div class="event-label">Liability Waiver</div>
+    <h1>1st Annual<span>Division St. Exhibition</span></h1>
+    <div class="event-info">
+      <strong>Saturday, April 11, 2026</strong><br>
+      3:00 PM – 10:00 PM<br>
+      4429 W. Division St, Chicago
+    </div>
+    <div class="artists">
+      <span class="artist-tag">Norman Teague</span>
+      <span class="artist-tag">John Preus</span>
+      <span class="artist-tag">Ben Stagl</span>
+      <span class="artist-tag">Ally Reza</span>
+      <span class="artist-tag">Max Davis</span>
+      <span class="artist-tag">Eric Hotchkiss</span>
+      <span class="artist-tag">Jeremiah Hulsebos-Spofford</span>
+      <span class="artist-tag">Patrick Hurley</span>
+      <span class="artist-tag">Edra Soto</span>
+      <span class="artist-tag">Dan Sullivan</span>
     </div>
   </header>
 
   <div id="form-section">
 
     <div class="waiver-box" id="waiver-text">
-      <h3>Release of Liability &amp; Assumption of Risk</h3>
-      <p>I, the undersigned, acknowledge that the premises at 4429–4431 W Division Street, Chicago, Illinois ("Premises") contain active design studios, fabrication equipment, woodworking machinery, CNC machinery, panel cutting equipment, and related tools and materials. I understand that visiting these Premises involves inherent risks, including but not limited to exposure to machinery, tools, dust, noise, and other industrial hazards.</p>
-      <p>In consideration for being permitted to attend the Open House event on April 11, 2026, I hereby voluntarily agree to assume all risks of injury, loss, or damage arising from my presence at the Premises, whether or not caused by the negligence of Norman Teague Design Studio, MaxCNC, ChiLab Studio, Eric Hotchkiss, John Preus, or any of their respective members, employees, agents, or representatives (collectively, "Hosts").</p>
+      <h3>Release of Liability & Assumption of Risk</h3>
+      <p>I, the undersigned, acknowledge that the premises at 4429 W. Division Street, Chicago, Illinois ("Premises") contain active design studios, fabrication equipment, woodworking machinery, CNC machinery, and related tools and materials. I understand that visiting these Premises involves inherent risks, including but not limited to exposure to machinery, tools, dust, noise, and other industrial hazards.</p>
+      <p>In consideration for being permitted to attend the 1st Annual Division St. Exhibition on April 11, 2026, I hereby voluntarily agree to assume all risks of injury, loss, or damage arising from my presence at the Premises, whether or not caused by the negligence of the exhibiting artists, building owners, or their respective members, employees, agents, or representatives (collectively, "Hosts").</p>
       <p>I hereby release, waive, discharge, and covenant not to sue the Hosts and the owners of the Premises from any and all liability, claims, demands, actions, or causes of action arising out of or related to any loss, damage, or injury (including death) that may be sustained by me or any property belonging to me, while on or about the Premises.</p>
-      <p><strong>Photo &amp; Video Release:</strong> I grant permission to the Hosts to use photographs and video recordings taken of me at this event for promotional, editorial, and social media purposes, without compensation.</p>
+      <p><strong>Photo & Video Release:</strong> I grant permission to the Hosts to use photographs and video recordings taken of me at this event for promotional, editorial, and social media purposes, without compensation.</p>
       <p>I acknowledge that I have read this agreement, understand its terms, and am signing freely and voluntarily. If I am signing on behalf of a minor, I represent that I am the minor's parent or legal guardian and have authority to execute this release on their behalf.</p>
       <p>This agreement shall be governed by the laws of the State of Illinois.</p>
     </div>
@@ -282,43 +320,42 @@
       <div class="form-group">
         <label for="dob">Date of Birth <span class="req">*</span></label>
         <input type="date" id="dob" name="dob" required>
-        <div class="error-msg" id="err-dob">Required (must be 18+ or accompanied by guardian)</div>
+        <div class="error-msg" id="err-dob">Required</div>
       </div>
 
-      <div class="form-group" style="margin-top: 24px;">
+      <div class="form-group" style="margin-top: 28px;">
         <label>Agreements <span class="req">*</span></label>
 
         <label class="checkbox-group" id="cb1-label" for="cb1">
           <input type="checkbox" id="cb1" name="agree_waiver" required>
-          <span class="check-label">I have read and agree to the Release of Liability &amp; Assumption of Risk above. I understand I am waiving legal rights.</span>
+          <span class="check-label">I have read and agree to the Release of Liability & Assumption of Risk above. I understand I am waiving legal rights.</span>
         </label>
 
         <label class="checkbox-group" id="cb2-label" for="cb2">
           <input type="checkbox" id="cb2" name="agree_photo">
-          <span class="check-label">I consent to being photographed/filmed at this event for promotional use by the Hosts. <em>(Optional)</em></span>
+          <span class="check-label">I consent to being photographed/filmed at this event for promotional use. <em style="color:#555">(Optional)</em></span>
         </label>
 
         <label class="checkbox-group" id="cb3-label" for="cb3">
           <input type="checkbox" id="cb3" name="agree_minor">
           <span class="check-label">I am signing on behalf of a minor attending with me. I am their parent or legal guardian.</span>
         </label>
-        <div class="error-msg" id="err-cb1" style="margin-top: -4px; margin-bottom: 8px;">You must agree to the waiver to continue</div>
+        <div class="error-msg" id="err-cb1" style="margin-top: -2px; margin-bottom: 8px;">You must agree to the waiver to continue</div>
       </div>
 
-      <button type="submit" class="submit-btn" id="submit-btn">Sign Waiver &amp; Check In</button>
+      <button type="submit" class="submit-btn" id="submit-btn">Sign Waiver</button>
 
     </form>
   </div>
 
   <div class="success-screen" id="success-screen">
-    <div class="checkmark">✅</div>
-    <h2>You're checked in!</h2>
-    <p>Thanks for signing. Enjoy the open house at<br>4429–4431 W Division. Welcome!</p>
+    <div class="checkmark">✓</div>
+    <h2>You're all set</h2>
+    <p>Thanks for signing. Welcome to the<br>1st Annual Division St. Exhibition.</p>
   </div>
 
   <footer>
-    Open House · April 11, 2026 · 4429–4431 W Division St, Chicago, IL<br>
-    By submitting this form you agree to the terms above. Powered by Google Sheets.
+    Division St. Exhibition · April 11, 2026 · 4429 W. Division St, Chicago
   </footer>
 
 </div>
@@ -380,7 +417,7 @@
       document.getElementById('success-screen').style.display = 'block';
     } catch (err) {
       btn.disabled = false;
-      btn.textContent = 'Sign Waiver & Check In';
+      btn.textContent = 'Sign Waiver';
       alert('Submission failed. Please try again or ask a host for assistance.');
     }
   });
