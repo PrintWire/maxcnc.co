@@ -27,7 +27,12 @@
   .page-wrapper {
     min-height: 100vh;
     padding: 24px 16px 48px;
-    background-color: var(--cream);
+    background: 
+      linear-gradient(to bottom, rgba(245,242,235,0) 0%, rgba(245,242,235,1) 100%),
+      url('bg-flyer.jpg');
+    background-size: 100% auto;
+    background-position: top center;
+    background-repeat: no-repeat;
   }
 
   .container {
@@ -36,22 +41,9 @@
   }
 
   header {
-    text-align: center;
-    padding: 20px 0 28px;
-    margin: -24px -16px 24px;
-    padding: 44px 16px 28px;
-    background: 
-      linear-gradient(to bottom, rgba(245,242,235,0) 0%, rgba(245,242,235,1) 100%),
-      url('bg-header.jpg');
-    background-size: 100% auto;
-    background-position: top center;
-    background-repeat: no-repeat;
-  }
-
-  .title-wrapper {
-    display: inline-block;
-    padding: 0;
-    margin-bottom: 20px;
+    text-align: left;
+    padding: 20px 20px 28px;
+    margin-bottom: 24px;
   }
 
   header h1 {
@@ -61,6 +53,7 @@
     color: var(--orange);
     font-size: clamp(38px, 10vw, 52px);
     line-height: 0.95;
+    margin-bottom: 20px;
   }
 
   .event-details {
@@ -123,7 +116,7 @@
     line-height: 1.7;
     margin-bottom: 28px;
     padding: 16px;
-    background: rgba(245, 242, 235, 0.97);
+    background: rgba(255,255,255,0.6);
     border-radius: 4px;
   }
 
@@ -140,8 +133,6 @@
     border-radius: 6px;
     padding: 28px 24px;
     box-shadow: 0 2px 20px rgba(26, 43, 74, 0.08);
-    position: relative;
-    z-index: 10;
   }
 
   .form-header {
@@ -368,9 +359,7 @@
 <div class="container">
 
   <header>
-    <div class="title-wrapper">
-      <h1>all studio<br>open house</h1>
-    </div>
+    <h1>all studio<br>open house</h1>
     
     <div class="event-details">
       <div class="event-left">
