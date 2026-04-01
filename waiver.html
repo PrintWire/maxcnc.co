@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Open House Waiver — 4429-4431 W Division, Chicago</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #0f0f0f;
+    color: #e8e8e8;
+    min-height: 100vh;
+    padding: 20px 16px 40px;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    padding: 32px 0 24px;
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 28px;
+  }
+
+  header .event-date {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 10px;
+  }
+
+  header h1 {
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  header .address {
+    font-size: 15px;
+    color: #aaa;
+  }
+
+  .hosts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 16px 0 0;
+  }
+
+  .host-tag {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-size: 12px;
+    color: #ccc;
+  }
+
+  .waiver-box {
+    background: #141414;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+    max-height: 220px;
+    overflow-y: auto;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #aaa;
+  }
+
+  .waiver-box::-webkit-scrollbar { width: 4px; }
+  .waiver-box::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+
+  .waiver-box h3 {
+    color: #ddd;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .waiver-box p { margin-bottom: 10px; }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  label span.req { color: #e06c75; }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="date"] {
+    width: 100%;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 16px;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  input:focus { border-color: #666; }
+  input::placeholder { color: #555; }
+
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  @media (max-width: 400px) { .row { grid-template-columns: 1fr; } }
+
+  .checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .checkbox-group:hover { border-color: #555; }
+  .checkbox-group.checked { border-color: #4caf50; background: #0f1f0f; }
+
+  .checkbox-group input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    accent-color: #4caf50;
+    cursor: pointer;
+    margin-top: 1px;
+  }
+
+  .checkbox-group .check-label {
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: #fff;
+    color: #000;
+    border: none;
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 8px;
+  }
+
+  .submit-btn:hover { background: #e8e8e8; }
+  .submit-btn:active { transform: scale(0.98); }
+  .submit-btn:disabled { background: #333; color: #666; cursor: not-allowed; transform: none; }
+
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  .success-screen .checkmark {
+    font-size: 64px;
+    margin-bottom: 20px;
+  }
+
+  .success-screen h2 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .success-screen p {
+    color: #888;
+    font-size: 15px;
+  }
+
+  .error-msg {
+    color: #e06c75;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none;
+  }
+
+  .scroll-hint {
+    text-align: center;
+    font-size: 11px;
+    color: #555;
+    margin-top: -16px;
+    margin-bottom: 20px;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 11px;
+    color: #444;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #1a1a1a;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="event-date">Saturday, April 11, 2026 · 3:00 PM – 10:00 PM</div>
+    <h1>Open House Waiver</h1>
+    <div class="address">4429–4431 W Division St, Chicago, IL</div>
+    <div class="hosts">
+      <span class="host-tag">Norman Teague Design Studio</span>
+      <span class="host-tag">MaxCNC</span>
+      <span class="host-tag">ChiLab Studio</span>
+      <span class="host-tag">Eric Hotchkiss</span>
+      <span class="host-tag">John Preus</span>
+    </div>
+  </header>
+
+  <div id="form-section">
+
+    <div class="waiver-box" id="waiver-text">
+      <h3>Release of Liability &amp; Assumption of Risk</h3>
+      <p>I, the undersigned, acknowledge that the premises at 4429–4431 W Division Street, Chicago, Illinois ("Premises") contain active design studios, fabrication equipment, woodworking machinery, CNC machinery, panel cutting equipment, and related tools and materials. I understand that visiting these Premises involves inherent risks, including but not limited to exposure to machinery, tools, dust, noise, and other industrial hazards.</p>
+      <p>In consideration for being permitted to attend the Open House event on April 11, 2026, I hereby voluntarily agree to assume all risks of injury, loss, or damage arising from my presence at the Premises, whether or not caused by the negligence of Norman Teague Design Studio, MaxCNC, ChiLab Studio, Eric Hotchkiss, John Preus, or any of their respective members, employees, agents, or representatives (collectively, "Hosts").</p>
+      <p>I hereby release, waive, discharge, and covenant not to sue the Hosts and the owners of the Premises from any and all liability, claims, demands, actions, or causes of action arising out of or related to any loss, damage, or injury (including death) that may be sustained by me or any property belonging to me, while on or about the Premises.</p>
+      <p><strong>Photo &amp; Video Release:</strong> I grant permission to the Hosts to use photographs and video recordings taken of me at this event for promotional, editorial, and social media purposes, without compensation.</p>
+      <p>I acknowledge that I have read this agreement, understand its terms, and am signing freely and voluntarily. If I am signing on behalf of a minor, I represent that I am the minor's parent or legal guardian and have authority to execute this release on their behalf.</p>
+      <p>This agreement shall be governed by the laws of the State of Illinois.</p>
+    </div>
+    <p class="scroll-hint">↑ Scroll to read full agreement</p>
+
+    <form id="waiver-form" novalidate>
+
+      <div class="row">
+        <div class="form-group">
+          <label for="first_name">First Name <span class="req">*</span></label>
+          <input type="text" id="first_name" name="first_name" placeholder="Jane" required autocomplete="given-name">
+          <div class="error-msg" id="err-first">Required</div>
+        </div>
+        <div class="form-group">
+          <label for="last_name">Last Name <span class="req">*</span></label>
+          <input type="text" id="last_name" name="last_name" placeholder="Smith" required autocomplete="family-name">
+          <div class="error-msg" id="err-last">Required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address <span class="req">*</span></label>
+        <input type="email" id="email" name="email" placeholder="jane@example.com" required autocomplete="email">
+        <div class="error-msg" id="err-email">Valid email required</div>
+      </div>
+
+      <div class="form-group">
+        <label for="dob">Date of Birth <span class="req">*</span></label>
+        <input type="date" id="dob" name="dob" required>
+        <div class="error-msg" id="err-dob">Required (must be 18+ or accompanied by guardian)</div>
+      </div>
+
+      <div class="form-group" style="margin-top: 24px;">
+        <label>Agreements <span class="req">*</span></label>
+
+        <label class="checkbox-group" id="cb1-label" for="cb1">
+          <input type="checkbox" id="cb1" name="agree_waiver" required>
+          <span class="check-label">I have read and agree to the Release of Liability &amp; Assumption of Risk above. I understand I am waiving legal rights.</span>
+        </label>
+
+        <label class="checkbox-group" id="cb2-label" for="cb2">
+          <input type="checkbox" id="cb2" name="agree_photo">
+          <span class="check-label">I consent to being photographed/filmed at this event for promotional use by the Hosts. <em>(Optional)</em></span>
+        </label>
+
+        <label class="checkbox-group" id="cb3-label" for="cb3">
+          <input type="checkbox" id="cb3" name="agree_minor">
+          <span class="check-label">I am signing on behalf of a minor attending with me. I am their parent or legal guardian.</span>
+        </label>
+        <div class="error-msg" id="err-cb1" style="margin-top: -4px; margin-bottom: 8px;">You must agree to the waiver to continue</div>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">Sign Waiver &amp; Check In</button>
+
+    </form>
+  </div>
+
+  <div class="success-screen" id="success-screen">
+    <div class="checkmark">✅</div>
+    <h2>You're checked in!</h2>
+    <p>Thanks for signing. Enjoy the open house at<br>4429–4431 W Division. Welcome!</p>
+  </div>
+
+  <footer>
+    Open House · April 11, 2026 · 4429–4431 W Division St, Chicago, IL<br>
+    By submitting this form you agree to the terms above. Powered by Google Sheets.
+  </footer>
+
+</div>
+
+<script>
+  // Checkbox visual feedback
+  document.querySelectorAll('.checkbox-group input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      cb.closest('.checkbox-group').classList.toggle('checked', cb.checked);
+    });
+  });
+
+  // Form submission via Google Apps Script
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzFUrjXb2ytJZ4M3C-LUEjyCCp1yQu02WcCeVaDpe48hI5-Rkc4m8Y4ZWQX_BYDeDYouQ/exec';
+
+  document.getElementById('waiver-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Validate
+    let valid = true;
+
+    const first = document.getElementById('first_name').value.trim();
+    const last = document.getElementById('last_name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const dob = document.getElementById('dob').value;
+    const cb1 = document.getElementById('cb1').checked;
+
+    document.getElementById('err-first').style.display = first ? 'none' : 'block';
+    document.getElementById('err-last').style.display = last ? 'none' : 'block';
+    document.getElementById('err-email').style.display = /\S+@\S+\.\S+/.test(email) ? 'none' : 'block';
+    document.getElementById('err-dob').style.display = dob ? 'none' : 'block';
+    document.getElementById('err-cb1').style.display = cb1 ? 'none' : 'block';
+
+    if (!first || !last || !/\S+@\S+\.\S+/.test(email) || !dob || !cb1) return;
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+
+    const data = {
+      timestamp: new Date().toISOString(),
+      first_name: first,
+      last_name: last,
+      email: email,
+      dob: dob,
+      agree_waiver: cb1,
+      agree_photo: document.getElementById('cb2').checked,
+      agree_minor: document.getElementById('cb3').checked,
+    };
+
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      document.getElementById('form-section').style.display = 'none';
+      document.getElementById('success-screen').style.display = 'block';
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Sign Waiver & Check In';
+      alert('Submission failed. Please try again or ask a host for assistance.');
+    }
+  });
+</script>
+</body>
+</html>
