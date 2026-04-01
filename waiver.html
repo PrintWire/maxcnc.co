@@ -41,9 +41,17 @@
   }
 
   header {
-    text-align: left;
-    padding: 20px 20px 28px;
+    text-align: center;
+    padding: 20px 0 28px;
     margin-bottom: 24px;
+  }
+
+  .title-wrapper {
+    display: inline-block;
+    background: rgba(245, 242, 235, 0.97);
+    padding: 16px 24px;
+    border-radius: 4px;
+    margin-bottom: 20px;
   }
 
   header h1 {
@@ -53,11 +61,6 @@
     color: var(--orange);
     font-size: clamp(38px, 10vw, 52px);
     line-height: 0.95;
-    margin-bottom: 20px;
-    background: rgba(245, 242, 235, 0.97);
-    padding: 16px 20px;
-    border-radius: 4px;
-    display: inline-block;
   }
 
   .event-details {
@@ -363,7 +366,9 @@
 <div class="container">
 
   <header>
-    <h1>all studio<br>open house</h1>
+    <div class="title-wrapper">
+      <h1>all studio<br>open house</h1>
+    </div>
     
     <div class="event-details">
       <div class="event-left">
@@ -524,4 +529,3 @@
 </script>
 </body>
 </html>
-<!-- updated Wed Apr  1 03:04:38 PM CDT 2026 -->
