@@ -437,7 +437,24 @@
           <div class="error-msg" id="err-email">Valid email required</div>
         </div>
 
+        <div class="form-group">
+          <label for="phone">Mobile Phone <span class="req">*</span></label>
+          <input type="text" id="phone" name="phone" placeholder="(312) 555-1234" required autocomplete="tel">
+          <div class="error-msg" id="err-phone">Required</div>
+        </div>
 
+        <div class="row">
+          <div class="form-group">
+            <label for="zipcode">Zip Code <span class="req">*</span></label>
+            <input type="text" id="zipcode" name="zipcode" placeholder="60612" required autocomplete="postal-code">
+            <div class="error-msg" id="err-zip">Required</div>
+          </div>
+          <div class="form-group">
+            <label for="invited_by">Invited By <span class="req">*</span></label>
+            <input type="text" id="invited_by" name="invited_by" placeholder="Who invited you?" required>
+            <div class="error-msg" id="err-invited">Required</div>
+          </div>
+        </div>
 
         <div class="waiver-section">
           <h3>Release of Liability</h3>
@@ -468,6 +485,8 @@
           <div class="error-msg" id="err-cb1">You must agree to the waiver to continue</div>
         </div>
 
+        <p style="text-align:center;font-size:12px;color:#888;margin-top:16px;line-height:1.6;">💛 Donations are encouraged at the door to support<br>the artists and future exhibitions.</p>
+
         <button type="submit" class="submit-btn" id="submit-btn">Confirm RSVP</button>
 
       </form>
@@ -477,6 +496,7 @@
       <div class="checkmark">✓</div>
       <h2>you're in!</h2>
       <p>Thanks for your RSVP. We'll see you at the<br>1st Annual Division St. Exhibition.<br><br><strong>April 11, 2026 · 3pm</strong><br>4429 W. Division St, Chicago</p>
+      <p style="margin-top:16px;font-size:13px;color:#888;">💛 Donations are encouraged at the door to support the artists and future exhibitions.</p>
     </div>
   </div>
 
@@ -507,16 +527,20 @@
     const first = document.getElementById('first_name').value.trim();
     const last = document.getElementById('last_name').value.trim();
     const email = document.getElementById('email').value.trim();
-
+    const phone = document.getElementById('phone').value.trim();
+    const zipcode = document.getElementById('zipcode').value.trim();
+    const invited_by = document.getElementById('invited_by').value.trim();
     const cb1 = document.getElementById('cb1').checked;
 
     document.getElementById('err-first').style.display = first ? 'none' : 'block';
     document.getElementById('err-last').style.display = last ? 'none' : 'block';
     document.getElementById('err-email').style.display = /\S+@\S+\.\S+/.test(email) ? 'none' : 'block';
-
+    document.getElementById('err-phone').style.display = phone ? 'none' : 'block';
+    document.getElementById('err-zip').style.display = zipcode ? 'none' : 'block';
+    document.getElementById('err-invited').style.display = invited_by ? 'none' : 'block';
     document.getElementById('err-cb1').style.display = cb1 ? 'none' : 'block';
 
-    if (!first || !last || !/\S+@\S+\.\S+/.test(email) || !cb1) return;
+    if (!first || !last || !/\S+@\S+\.\S+/.test(email) || !phone || !zipcode || !invited_by || !cb1) return;
 
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
@@ -527,7 +551,9 @@
       first_name: first,
       last_name: last,
       email: email,
-
+      phone: phone,
+      zipcode: zipcode,
+      invited_by: invited_by,
       agree_waiver: cb1,
       agree_photo: document.getElementById('cb2').checked,
       agree_minor: document.getElementById('cb3').checked,
