@@ -438,9 +438,8 @@
         </div>
 
         <div class="form-group">
-          <label for="phone">Mobile Phone <span class="req">*</span></label>
-          <input type="text" id="phone" name="phone" placeholder="(312) 555-1234" required autocomplete="tel">
-          <div class="error-msg" id="err-phone">Required</div>
+          <label for="phone">Mobile Phone <em style="color:#999;font-weight:400;text-transform:none;letter-spacing:0">(Optional)</em></label>
+          <input type="text" id="phone" name="phone" placeholder="(312) 555-1234" autocomplete="tel">
         </div>
 
         <div class="row">
@@ -535,12 +534,11 @@
     document.getElementById('err-first').style.display = first ? 'none' : 'block';
     document.getElementById('err-last').style.display = last ? 'none' : 'block';
     document.getElementById('err-email').style.display = /\S+@\S+\.\S+/.test(email) ? 'none' : 'block';
-    document.getElementById('err-phone').style.display = phone ? 'none' : 'block';
     document.getElementById('err-zip').style.display = zipcode ? 'none' : 'block';
     document.getElementById('err-invited').style.display = invited_by ? 'none' : 'block';
     document.getElementById('err-cb1').style.display = cb1 ? 'none' : 'block';
 
-    if (!first || !last || !/\S+@\S+\.\S+/.test(email) || !phone || !zipcode || !invited_by || !cb1) return;
+    if (!first || !last || !/\S+@\S+\.\S+/.test(email) || !zipcode || !invited_by || !cb1) return;
 
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
