@@ -455,6 +455,36 @@
           </div>
         </div>
 
+        <label class="checkbox-group" id="plus1-label" for="plus1">
+          <input type="checkbox" id="plus1" name="plus1">
+          <span class="check-label">I'm bringing a <strong>+1</strong></span>
+        </label>
+
+        <div id="plus1-fields" style="display:none;border:2px solid #e8e8e8;border-radius:6px;padding:20px;margin-bottom:18px;background:#fafafa;">
+          <label style="display:block;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--navy);margin-bottom:14px;">+1 Guest Information</label>
+          <div class="row">
+            <div class="form-group">
+              <label for="plus1_first">First Name <span class="req">*</span></label>
+              <input type="text" id="plus1_first" name="plus1_first" placeholder="First name">
+              <div class="error-msg" id="err-plus1-first">Required</div>
+            </div>
+            <div class="form-group">
+              <label for="plus1_last">Last Name <span class="req">*</span></label>
+              <input type="text" id="plus1_last" name="plus1_last" placeholder="Last name">
+              <div class="error-msg" id="err-plus1-last">Required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="plus1_email">Email Address <span class="req">*</span></label>
+            <input type="email" id="plus1_email" name="plus1_email" placeholder="guest@example.com">
+            <div class="error-msg" id="err-plus1-email">Valid email required</div>
+          </div>
+          <div class="form-group">
+            <label for="plus1_phone">Mobile Phone <em style="color:#999;font-weight:400;text-transform:none;letter-spacing:0">(Optional)</em></label>
+            <input type="text" id="plus1_phone" name="plus1_phone" placeholder="(312) 555-1234">
+          </div>
+        </div>
+
         <div class="waiver-section">
           <h3>Release of Liability</h3>
           
@@ -518,6 +548,11 @@
     });
   });
 
+  document.getElementById('plus1').addEventListener('change', function() {
+    document.getElementById('plus1-fields').style.display = this.checked ? 'block' : 'none';
+    this.closest('.checkbox-group').classList.toggle('checked', this.checked);
+  });
+
   const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzFUrjXb2ytJZ4M3C-LUEjyCCp1yQu02WcCeVaDpe48hI5-Rkc4m8Y4ZWQX_BYDeDYouQ/exec';
 
   document.getElementById('waiver-form').addEventListener('submit', async function(e) {
@@ -538,7 +573,20 @@
     document.getElementById('err-invited').style.display = invited_by ? 'none' : 'block';
     document.getElementById('err-cb1').style.display = cb1 ? 'none' : 'block';
 
-    if (!first || !last || !/\S+@\S+\.\S+/.test(email) || !zipcode || !invited_by || !cb1) return;
+    let valid = first && last && /\S+@\S+\.\S+/.test(email) && zipcode && invited_by && cb1;
+
+    const hasPlus1 = document.getElementById('plus1').checked;
+    if (hasPlus1) {
+      const p1f = document.getElementById('plus1_first').value.trim();
+      const p1l = document.getElementById('plus1_last').value.trim();
+      const p1e = document.getElementById('plus1_email').value.trim();
+      document.getElementById('err-plus1-first').style.display = p1f ? 'none' : 'block';
+      document.getElementById('err-plus1-last').style.display = p1l ? 'none' : 'block';
+      document.getElementById('err-plus1-email').style.display = /\S+@\S+\.\S+/.test(p1e) ? 'none' : 'block';
+      if (!p1f || !p1l || !/\S+@\S+\.\S+/.test(p1e)) valid = false;
+    }
+
+    if (!valid) return;
 
     const btn = document.getElementById('submit-btn');
     btn.disabled = true;
@@ -552,6 +600,11 @@
       phone: phone,
       zipcode: zipcode,
       invited_by: invited_by,
+      has_plus1: hasPlus1,
+      plus1_first: hasPlus1 ? document.getElementById('plus1_first').value.trim() : '',
+      plus1_last: hasPlus1 ? document.getElementById('plus1_last').value.trim() : '',
+      plus1_email: hasPlus1 ? document.getElementById('plus1_email').value.trim() : '',
+      plus1_phone: hasPlus1 ? document.getElementById('plus1_phone').value.trim() : '',
       agree_waiver: cb1,
       agree_photo: document.getElementById('cb2').checked,
       agree_minor: document.getElementById('cb3').checked,
